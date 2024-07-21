@@ -17,13 +17,11 @@ const allRecipes: ComputedRef<Recipe[]> = computed(() => recipesRef.value);
 
 <template>
   <ul>
-    <GourmandButtonLink
-      :is-router-link="true"
-      link="#"
-      v-for="recipe in allRecipes"
-    >
-      <RecipeItem :recipe-name="recipe.name" :image-url="recipe.imagePath" />
-    </GourmandButtonLink>
+    <li v-for="recipe in allRecipes">
+      <GourmandButtonLink :is-router-link="true" link="#">
+        <RecipeItem :recipe-name="recipe.name" :image-url="recipe.imagePath" />
+      </GourmandButtonLink>
+    </li>
   </ul>
 </template>
 
