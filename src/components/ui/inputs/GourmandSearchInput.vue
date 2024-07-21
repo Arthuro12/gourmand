@@ -47,6 +47,6 @@ input:focus {
 }
 
 :deep(button) {
-  margin-right: 7px;
+  margin-left: 16px;
 }
 </style>
