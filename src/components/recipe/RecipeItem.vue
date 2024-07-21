@@ -10,7 +10,7 @@ defineProps<{
   <div class="recipe-card">
     <GourmandCard>
       <template #cardHeader>
-        <img class="recipe-card__image" :src="imageUrl" />
+        <img class="recipe-card__image" :src="imageUrl" alt="" />
       </template>
       <template #cardBody>
         <div class="recipe-card__title-wrapper">
