@@ -1,14 +1,16 @@
 <script setup lang="ts">
 defineProps<{
-  buttonText: string;
+  isRouterLink: boolean;
   link: string;
+  buttonText?: string;
 }>();
 </script>
 
 <template>
-  <a :href="link">
-    {{ buttonText }}
+  <a v-if="!isRouterLink" :href="link">
+    <span v-if="buttonText">{{ buttonText }}</span>
   </a>
+  <slot v-else></slot>
 </template>
 
 <style scoped>

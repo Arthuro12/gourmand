@@ -12,7 +12,13 @@ import GourmandButtonLink from "../ui/GourmandButtonLink.vue";
         <ul class="page-header__nav-items">
           <li><a href="#">Home</a></li>
           <li><a href="#">Kategorien</a></li>
-          <li><GourmandButtonLink button-text="Anmelden" link="#" /></li>
+          <li>
+            <GourmandButtonLink
+              :is-router-link="false"
+              button-text="Anmelden"
+              link="#"
+            />
+          </li>
         </ul>
       </nav>
     </div>
