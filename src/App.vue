@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import GourmandHeader from "./components/layouts/GourmandHeader.vue";
 import GourmandFooter from "./components/layouts/GourmandFooter.vue";
+import RecipeItem from "./components/recipe/RecipeItem.vue";
 import SearchRecipe from "./components/search/recipe/SearchRecipe.vue";
 </script>
 
 <template>
   <GourmandHeader />
   <main>
-    <div class="flex justify-center mt-10">
+    <div class="flex justify-center mt-10 mb-40">
       <SearchRecipe />
     </div>
+    <RecipeItem />
   </main>
   <GourmandFooter />
 </template>

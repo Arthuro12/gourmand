@@ -1,6 +1,7 @@
 export const recipes: Recipe[] = [
   {
     name: "Mini-Lasagne",
+    imagePath: "/src/assets/images/lasagne.jpg",
     description: "Keine Beschreibung verfügbar.",
     ingredients: [
       "24 Lasagneplatte(n)",
@@ -29,6 +30,7 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Marokkanisches Ofengemüse",
+    imagePath: "/src/assets/images/lasagne.jpg",
     description: "Keine Beschreibung verfügbar.",
     ingredients: [
       "1/2 Blumenkohl",
@@ -62,6 +64,7 @@ export const recipes: Recipe[] = [
   },
   {
     name: "High Protein Feta-Muffins",
+    imagePath: "/src/assets/images/lasagne.jpg",
     description: "Keine Beschreibung verfügbar.",
     ingredients: [
       "2 Pck. HENGLEIN Flammkuchenteig",
@@ -81,6 +84,7 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Linguine mit veganen Pesto, getrockneten Tomaten und Blumenkohl",
+    imagePath: "/src/assets/images/lasagne.jpg",
     description: "Keine Beschreibung verfügbar.",
     ingredients: [
       "120g Pesto Barilla Basilico Vegan",
@@ -106,6 +110,7 @@ export const recipes: Recipe[] = [
   },
   {
     name: "Honey Explosion Burger - Teriyaki Burger mit cremiger Aioli",
+    imagePath: "/src/assets/images/burger.jpg",
     description: "Keine Beschreibung verfügbar.",
     ingredients: [
       "4 Burger Buns",
@@ -137,6 +142,7 @@ export const recipes: Recipe[] = [
 
 export type Recipe = {
   name: string;
+  imagePath?: string;
   description: string;
   ingredients: string[];
   preparation: string;

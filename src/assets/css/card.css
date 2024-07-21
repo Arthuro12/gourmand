@@ -1,0 +1,14 @@
+.recipe-card {
+  width: 340px;
+  height: 400px;
+}
+
+.recipe-card__image {
+  width: 100%;
+  height: 80%;
+  border-radius: 20px;
+}
+
+.recipe-card__title {
+  font-size: 16px;
+}
