@@ -1,47 +1,34 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import GourmandHeader from "./components/layouts/GourmandHeader.vue";
+import GourmandFooter from "./components/layouts/GourmandFooter.vue";
+import SearchRecipe from "./components/search/recipe/SearchRecipe.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
+  <GourmandHeader />
   <main>
-    <TheWelcome />
+    <div class="flex justify-center mt-10">
+      <SearchRecipe />
+    </div>
   </main>
+  <GourmandFooter />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<style>
+* {
+  box-sizing: border-box;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+html {
+  font-family: sans-serif;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+li {
+  list-style: none;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>
