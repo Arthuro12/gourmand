@@ -1,17 +1,26 @@
 <template>
-  <div class="">
-    <p>
-      Die angefordete Seite existiert leider nicht. Schauen Sie die Liste unsere
-      Rezepte <RouterLink to="/recipes">hier</RouterLink> Oder verwenden Sie das
-      Suchfeld, um nach Rezepten zu suchen.
+  <div class="page-not-found">
+    <h2 class="page-not-found__header-text">
+      Die angefordete Seite existiert leider nicht.
+    </h2>
+    <p class="page-not-found__description">
+      Schauen Sie sich <RouterLink to="/recipes">hier</RouterLink> die Liste
+      unserer Rezepte an. Oder verwenden Sie das Suchfeld, um nach Rezepten zu
+      suchen.
     </p>
   </div>
 </template>
 
 <style scoped>
-div {
+.page-not-found {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+
+.page-not-found__header-text {
+  text-align: center;
 }
 
 a {
