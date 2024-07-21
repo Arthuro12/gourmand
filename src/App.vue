@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import GourmandHeader from "./components/layouts/GourmandHeader.vue";
 import GourmandFooter from "./components/layouts/GourmandFooter.vue";
-import RecipeList from "./pages/recipe/RecipeList.vue";
 import SearchRecipe from "./components/search/recipe/SearchRecipe.vue";
 </script>
 
