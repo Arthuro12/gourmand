@@ -11,7 +11,9 @@ import SearchRecipe from "./components/search/recipe/SearchRecipe.vue";
     <div class="flex justify-center mt-10 mb-40">
       <SearchRecipe />
     </div>
-    <RecipeList />
+    <RouterView v-slot="{ Component }">
+      <component :is="Component"></component>
+    </RouterView>
   </main>
   <GourmandFooter />
 </template>
