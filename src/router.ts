@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 
-import RecipeList from "./pages/recipe/RecipeList.vue";
+import RecipeSearchPage from "./pages/recipe/RecipeSearchPage.vue";
 import NotFound from "./pages/NotFound.vue";
 
 const routes = [
@@ -10,7 +10,7 @@ const routes = [
   },
   {
     path: "/recipes",
-    component: RecipeList,
+    component: RecipeSearchPage,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
 ];

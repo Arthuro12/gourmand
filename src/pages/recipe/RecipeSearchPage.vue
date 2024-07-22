@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import GourmandButtonLink from "../../components/ui/GourmandButtonLink.vue";
 import RecipeItem from "../../components/recipe/RecipeItem.vue";
-import SearchRecipe from "../../components/search/recipe/SearchRecipe.vue";
+import SearchRecipeForm from "../../components/search/recipe/SearchRecipeForm.vue";
 
 import { computed, ref } from "vue";
 
@@ -53,7 +53,7 @@ function searchRecipe(value: string): void {
 
 <template>
   <div class="flex justify-center mt-10 mb-40">
-    <SearchRecipe
+    <SearchRecipeForm
       :validation-error-text="validationErrorText"
       @search-recipes="searchRecipe"
     />
