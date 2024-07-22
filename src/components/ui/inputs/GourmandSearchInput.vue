@@ -1,28 +1,51 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
+import type { Ref } from "vue";
+
 import GourmandButton from "../GourmandButton.vue";
 
 defineProps<{
   placeholder: string;
-  inputStyleOptions?: {
-    height?: string;
-    width?: string;
-  };
+  validationErrorText: string;
 }>();
+
+const emit = defineEmits<{
+  (event: "search", value: string): void;
+}>();
+
+const enteredText: Ref<string> = ref("");
+
+function triggerSearch(value: string): void {
+  emit("search", value);
+}
 </script>
 
 <template>
   <form class="search-input">
-    <div class="search-input__input-wrapper">
+    <div
+      class="search-input__input-wrapper"
+      :class="{
+        'highlight--red': validationErrorText && validationErrorText !== '',
+      }"
+    >
       <input
         type="text"
         :placeholder="placeholder"
-        :style="{
-          height: inputStyleOptions?.height,
-          width: inputStyleOptions?.width,
-        }"
+        v-model.trim="enteredText"
       />
-      <GourmandButton type="submit" button-text="Rezept finden" />
+      <GourmandButton
+        type="button"
+        button-text="Rezept finden"
+        @click="triggerSearch(enteredText)"
+      />
     </div>
+    <p
+      class="invalid-input"
+      v-if="validationErrorText && validationErrorText !== ''"
+    >
+      {{ validationErrorText }}
+    </p>
   </form>
 </template>
 
@@ -40,6 +63,7 @@ input {
   border: none;
   padding-left: 10px;
   margin-left: 7px;
+  width: 65%;
 }
 
 input:focus {
@@ -48,5 +72,15 @@ input:focus {
 
 :deep(button) {
   margin-left: 12px;
+}
+
+.invalid-input {
+  text-align: center;
+  color: red;
+}
+
+.highlight--red {
+  border: none;
+  outline: 2px solid red;
 }
 </style>
