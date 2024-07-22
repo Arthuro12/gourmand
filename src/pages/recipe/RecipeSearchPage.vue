@@ -34,7 +34,7 @@ function searchRecipe(value: string): void {
   if (isValidSearchInput) {
     refreshRecipes();
     recipesRef.value = recipesRef.value.filter((currRecipe: Recipe) =>
-      currRecipe.name.toLowerCase().startsWith(value.toLowerCase())
+      currRecipe.name.toLowerCase().includes(value.toLowerCase())
     );
 
     searchFailText.value =
