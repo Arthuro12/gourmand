@@ -36,7 +36,7 @@ function triggerSearch(value: string): void {
       />
       <GourmandButton
         type="button"
-        button-text="Rezept finden"
+        button-text="Rezepte finden"
         @click="triggerSearch(enteredText)"
       />
     </div>
@@ -71,7 +71,7 @@ input:focus {
 }
 
 :deep(button) {
-  margin-left: 12px;
+  margin-left: 4px;
 }
 
 .invalid-input {
