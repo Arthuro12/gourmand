@@ -5,7 +5,7 @@
     </h2>
     <p class="page-not-found__description">
       Schauen Sie sich <RouterLink to="/recipes">hier</RouterLink> die Liste
-      unserer Rezepte an. Oder verwenden Sie das Suchfeld, um nach Rezepten zu
+      unserer Rezepte an, oder verwenden Sie das Suchfeld, um nach Rezepten zu
       suchen.
     </p>
   </div>
