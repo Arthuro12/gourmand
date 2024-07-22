@@ -16,7 +16,6 @@ function triggerRecipeSearch(value: string): void {
 
 <template>
   <SearchInput
-    :input-style-options="{ width: '65%' }"
     placeholder="Beginnen Sie Ihre Suche..."
     :validation-error-text="validationErrorText"
     @search="triggerRecipeSearch"
