@@ -6,11 +6,11 @@ import GourmandButtonLink from "../ui/GourmandButtonLink.vue";
   <header>
     <div class="page-header__row">
       <div class="page-logo-wrapper">
-        <div><a class="page-logo" href="/">Gourmand</a></div>
+        <div><RouterLink class="page-logo" to="/">Gourmand</RouterLink></div>
       </div>
       <nav class="page-header__nav">
         <ul class="page-header__nav-items">
-          <li><a href="/">Home</a></li>
+          <li><RouterLink to="/">Home</RouterLink></li>
           <li><a href="#">Kategorien</a></li>
           <li>
             <GourmandButtonLink
