@@ -10,7 +10,7 @@ import GourmandButtonLink from "../ui/GourmandButtonLink.vue";
       </div>
       <nav class="page-header__nav">
         <ul class="page-header__nav-items">
-          <li><a href="#">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="#">Kategorien</a></li>
           <li>
             <GourmandButtonLink
