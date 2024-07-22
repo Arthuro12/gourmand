@@ -12,9 +12,7 @@ import type { Recipe } from "../../recipe";
 import { recipes } from "../../recipe";
 
 const recipesRef: Ref<Recipe[]> = ref<Recipe[]>(recipes);
-const displayedRecipes: ComputedRef<Recipe[]> = computed(
-  () => recipesRef.value
-);
+const foundReciped: ComputedRef<Recipe[]> = computed(() => recipesRef.value);
 
 let isValidSearchInput: boolean = false;
 let validationErrorText: Ref<string> = ref("");
@@ -59,7 +57,7 @@ function searchRecipe(value: string): void {
     />
   </div>
   <ul>
-    <li v-for="recipe in displayedRecipes">
+    <li v-for="recipe in foundReciped">
       <GourmandButtonLink :is-router-link="true" link="#">
         <RecipeItem :recipe-name="recipe.name" :image-url="recipe.imagePath" />
       </GourmandButtonLink>
