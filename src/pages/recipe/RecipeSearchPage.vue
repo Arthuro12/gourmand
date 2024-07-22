@@ -79,5 +79,6 @@ ul {
   justify-content: space-between;
   width: 800px;
   margin: auto;
+  padding-left: 0;
 }
 </style>
