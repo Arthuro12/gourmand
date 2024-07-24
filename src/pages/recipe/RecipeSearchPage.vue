@@ -77,9 +77,12 @@ function searchRecipe(value: string): void {
 ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   width: 900px;
   margin: auto;
   padding-left: 0;
+}
+
+li {
+  margin-right: 1rem;
 }
 </style>
