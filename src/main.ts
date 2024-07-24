@@ -1,4 +1,5 @@
 import "./assets/css/tailwind-like.css";
+import "./assets/css/buttons.css";
 import "./assets/css/card.css";
 
 import { createApp } from "vue";
