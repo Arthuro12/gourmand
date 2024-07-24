@@ -16,10 +16,18 @@ const recipesRef: Ref<Recipe[]> = ref(recipes);
 const selectedRecipe: ComputedRef<Recipe | undefined> = computed(() =>
   recipesRef.value.find((currentRecipe) => currentRecipe.id === props.id)
 );
-const recipeName = computed(() => selectedRecipe.value?.name);
-const imageUrl = computed(() => selectedRecipe.value?.imagePath);
-const ingredients = computed(() => selectedRecipe.value?.ingredients);
-const preparationSteps = computed(() => selectedRecipe.value?.preparationSteps);
+const recipeName: ComputedRef<string | undefined> = computed(
+  () => selectedRecipe.value?.name
+);
+const imageUrl: ComputedRef<string | undefined> = computed(
+  () => selectedRecipe.value?.imagePath
+);
+const ingredients: ComputedRef<string[] | undefined> = computed(
+  () => selectedRecipe.value?.ingredients
+);
+const preparationSteps: ComputedRef<string[] | undefined> = computed(
+  () => selectedRecipe.value?.preparationSteps
+);
 </script>
 
 <template>
