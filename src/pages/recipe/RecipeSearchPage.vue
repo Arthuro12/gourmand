@@ -75,7 +75,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 800px;
+  width: 900px;
   margin: auto;
   padding-left: 0;
 }
