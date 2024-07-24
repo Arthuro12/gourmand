@@ -58,7 +58,10 @@ function searchRecipe(value: string): void {
   </div>
   <ul>
     <li v-for="recipe in foundReciped">
-      <GourmandButtonLink :is-router-link="true" link="#">
+      <GourmandButtonLink
+        :is-router-link="true"
+        :link="`/recipes/${recipe.id}`"
+      >
         <RecipeItem :recipe-name="recipe.name" :image-url="recipe.imagePath" />
       </GourmandButtonLink>
     </li>
