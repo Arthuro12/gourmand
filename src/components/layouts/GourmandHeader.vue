@@ -7,7 +7,7 @@ import GourmandButtonLink from "../ui/GourmandButtonLink.vue";
     <div class="page-header__row">
       <div class="page-logo-wrapper">
         <div>
-          <a class="page-logo button-link" href="/"> Gourmand </a>
+          <a class="page-logo button-link" href="/">Gourmand</a>
         </div>
       </div>
       <nav class="page-header__nav">
