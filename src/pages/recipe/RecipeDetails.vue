@@ -26,7 +26,7 @@ const preparationSteps = computed(() => selectedRecipe.value?.preparationSteps);
   <div class="recipe-page">
     <div class="recipe-page__header">
       <h3>{{ recipeName }}</h3>
-      <img :src="imageUrl" alt="" width="500px" height="400px" />
+      <img class="recipe-image" :src="imageUrl" alt="" />
     </div>
     <div class="recipe-page__body">
       <div>
@@ -48,5 +48,11 @@ const preparationSteps = computed(() => selectedRecipe.value?.preparationSteps);
 .recipe-page {
   width: 900px;
   margin: auto;
+}
+
+.recipe-image {
+  width: 500px;
+  height: 400px;
+  border-radius: 20px;
 }
 </style>
