@@ -59,6 +59,7 @@ function searchRecipe(value: string): void {
   <ul>
     <li v-for="recipe in foundReciped">
       <GourmandButtonLink
+        class="p-0"
         :is-router-link="true"
         :link="`/recipes/${recipe.id}`"
       >
@@ -83,6 +84,7 @@ ul {
 }
 
 li {
-  margin-right: 1rem;
+  margin-right: 2.5rem;
+  margin-bottom: 1rem;
 }
 </style>
