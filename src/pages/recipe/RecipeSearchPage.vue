@@ -80,7 +80,7 @@ ul {
   flex-wrap: wrap;
   width: 900px;
   margin: auto;
-  padding-left: 0;
+  padding: 0 5.5rem;
 }
 
 li {
