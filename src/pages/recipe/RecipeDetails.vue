@@ -3,9 +3,10 @@ import { computed, ref } from "vue";
 
 import type { ComputedRef, Ref } from "vue";
 
-import type { Recipe } from "../../recipe.js";
+import type { Recipe } from "../../recipes";
 
-import { recipes } from "../../recipe.js";
+import { recipes } from "../../recipes.js";
+import { router } from "@/router";
 
 const props = defineProps<{
   id: string;

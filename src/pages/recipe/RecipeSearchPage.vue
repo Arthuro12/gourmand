@@ -7,9 +7,9 @@ import { computed, ref } from "vue";
 
 import type { ComputedRef, Ref } from "vue";
 
-import type { Recipe } from "../../recipe";
+import type { Recipe } from "../../recipes";
 
-import { recipes } from "../../recipe";
+import { recipes } from "../../recipes";
 
 const recipesRef: Ref<Recipe[]> = ref<Recipe[]>(recipes);
 const foundReciped: ComputedRef<Recipe[]> = computed(() => recipesRef.value);
