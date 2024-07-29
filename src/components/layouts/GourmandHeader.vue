@@ -41,6 +41,10 @@ import GourmandButtonLink from "../ui/GourmandButtonLink.vue";
   padding: 0 2rem 0 2rem;
 }
 
+.page-logo-wrapper {
+  padding-top: 0.5rem;
+}
+
 .page-logo {
   color: rgb(206, 106, 106);
   font-size: 26px;
