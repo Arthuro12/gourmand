@@ -50,31 +50,40 @@ function searchRecipe(value: string): void {
 </script>
 
 <template>
-  <div class="flex justify-center mt-10 mb-40">
-    <SearchRecipeForm
-      :validation-error-text="validationErrorText"
-      @search-recipes="searchRecipe"
-    />
-  </div>
-  <ul>
-    <li v-for="recipe in foundReciped">
-      <GourmandButtonLink
-        class="p-0"
-        :is-router-link="true"
-        :link="`/recipes/${recipe.id}`"
-      >
-        <RecipeItem :recipe-name="recipe.name" :image-url="recipe.imagePath" />
-      </GourmandButtonLink>
-    </li>
-  </ul>
-  <div>
-    <p class="text-center" v-if="searchFailText">
-      {{ searchFailText }}
-    </p>
+  <div class="recipe-search-page">
+    <div class="flex justify-center mt-10 mb-40">
+      <SearchRecipeForm
+        :validation-error-text="validationErrorText"
+        @search-recipes="searchRecipe"
+      />
+    </div>
+    <ul>
+      <li v-for="recipe in foundReciped">
+        <GourmandButtonLink
+          class="p-0"
+          :is-router-link="true"
+          :link="`/recipes/${recipe.id}`"
+        >
+          <RecipeItem
+            :recipe-name="recipe.name"
+            :image-url="recipe.imagePath"
+          />
+        </GourmandButtonLink>
+      </li>
+    </ul>
+    <div>
+      <p class="text-center" v-if="searchFailText">
+        {{ searchFailText }}
+      </p>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.recipe-search-page {
+  margin-bottom: 4.5rem;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -86,5 +95,12 @@ ul {
 li {
   margin-right: 2.5rem;
   margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  ul {
+    width: 700px;
+    padding: 0 50px;
+  }
 }
 </style>

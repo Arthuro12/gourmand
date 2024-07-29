@@ -20,3 +20,14 @@ defineProps<{
     </GourmandCard>
   </div>
 </template>
+
+<style scoped>
+@media (min-width: 768px) and (max-width: 992px) {
+  .recipe-card__title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+  }
+}
+</style>
