@@ -4,8 +4,8 @@
       Die angefordete Seite existiert leider nicht.
     </h2>
     <p class="page-not-found__description">
-      Schauen Sie sich<RouterLink class="button-link" to="/recipes"
-        >hier die Liste unserer Rezepte</RouterLink
+      Schauen Sie sich<RouterLink class="button-link p-0" to="/recipes">
+        hier die Liste unserer Rezepte </RouterLink
       >an.
     </p>
   </div>
