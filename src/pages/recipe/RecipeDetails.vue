@@ -6,7 +6,6 @@ import type { ComputedRef, Ref } from "vue";
 import type { Recipe } from "../../recipes";
 
 import { recipes } from "../../recipes.js";
-import { router } from "@/router";
 
 const props = defineProps<{
   id: string;
