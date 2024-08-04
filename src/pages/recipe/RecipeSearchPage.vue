@@ -3,7 +3,7 @@ import GourmandButtonLink from "../../components/ui/GourmandButtonLink.vue";
 import RecipeItem from "../../components/recipe/RecipeItem.vue";
 import SearchRecipeForm from "../../components/search/recipe/SearchRecipeForm.vue";
 
-import { computed, ref } from "vue";
+import { computed, ref, provide } from "vue";
 
 import type { ComputedRef, Ref } from "vue";
 
@@ -47,6 +47,8 @@ function searchRecipe(value: string): void {
 
   validationErrorText.value = "Bitte geben Sie einen gültigen Rezeptnamen ein.";
 }
+
+provide("errorText", validationErrorText);
 </script>
 
 <template>

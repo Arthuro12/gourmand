@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { inject, ref } from "vue";
 
 import type { Ref } from "vue";
 
@@ -7,8 +7,9 @@ import GourmandButton from "../GourmandButton.vue";
 
 defineProps<{
   placeholder: string;
-  validationErrorText: string;
 }>();
+
+const validationErrorText: string = inject("errorText", "");
 
 const emit = defineEmits<{
   (event: "search", value: string): void;
