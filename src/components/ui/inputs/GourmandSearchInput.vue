@@ -1,21 +1,30 @@
 <script setup lang="ts">
-import { inject, ref } from "vue";
+import { computed, inject, ref } from "vue";
 
 import type { Ref } from "vue";
 
 import GourmandButton from "../GourmandButton.vue";
 
-defineProps<{
+const props = defineProps<{
+  modelValue: string;
   placeholder: string;
 }>();
 
 const validationErrorText: string = inject("errorText", "");
 
 const emit = defineEmits<{
+  (event: "update:modelValue", value: string): void;
   (event: "search", value: string): void;
 }>();
 
-const enteredText: Ref<string> = ref("");
+const inputText = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(value) {
+    emit("update:modelValue", value);
+  },
+});
 
 function triggerSearch(value: string): void {
   emit("search", value);
@@ -30,15 +39,11 @@ function triggerSearch(value: string): void {
         'highlight--red': validationErrorText && validationErrorText !== '',
       }"
     >
-      <input
-        type="text"
-        :placeholder="placeholder"
-        v-model.trim="enteredText"
-      />
+      <input type="text" :placeholder="placeholder" v-model.trim="inputText" />
       <GourmandButton
         type="button"
         button-text="Rezepte finden"
-        @click="triggerSearch(enteredText)"
+        @click="triggerSearch(inputText)"
       />
     </div>
     <p
