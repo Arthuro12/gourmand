@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, ref } from "vue";
+import { computed, inject, ref, toRef } from "vue";
 
 import type { Ref } from "vue";
 
@@ -8,9 +8,12 @@ import GourmandButton from "../GourmandButton.vue";
 const props = defineProps<{
   modelValue: string;
   placeholder: string;
+  validationErrorText?: string;
 }>();
+const errorTextRef = toRef(props.validationErrorText);
 
-const validationErrorText: string = inject("errorText", "");
+const validationErrorText: Ref<string> =
+  inject("errorText", ref("")) || errorTextRef || ref("");
 
 const emit = defineEmits<{
   (event: "update:modelValue", value: string): void;

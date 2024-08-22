@@ -54,10 +54,7 @@ provide("errorText", validationErrorText);
 <template>
   <div class="recipe-search-page">
     <div class="flex justify-center mt-10 mb-40">
-      <SearchRecipeForm
-        :validation-error-text="validationErrorText"
-        @search-recipes="searchRecipe"
-      />
+      <SearchRecipeForm @search-recipes="searchRecipe" />
     </div>
     <ul>
       <li v-for="recipe in foundReciped">
