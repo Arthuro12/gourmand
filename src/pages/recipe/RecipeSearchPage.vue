@@ -3,13 +3,13 @@ import GourmandButtonLink from "../../components/ui/GourmandButtonLink.vue";
 import RecipeItem from "../../components/recipe/RecipeItem.vue";
 import SearchRecipeForm from "../../components/search/recipe/SearchRecipeForm.vue";
 
-import { computed, ref, provide } from "vue";
-
+import { computed, ref, provide, onMounted, onBeforeUnmount } from "vue";
 import type { ComputedRef, Ref } from "vue";
 
 import type { Recipe } from "../../recipes";
-
 import { recipes } from "../../recipes";
+
+import EventBus from "../../event-bus";
 
 const recipesRef: Ref<Recipe[]> = ref<Recipe[]>(recipes);
 const foundReciped: ComputedRef<Recipe[]> = computed(() => recipesRef.value);
@@ -27,7 +27,7 @@ function refreshRecipes(): void {
   recipesRef.value = recipes;
 }
 
-function searchRecipe(value: string): void {
+const searchRecipe = (value: string) => {
   refreshErrorTexts();
 
   isValidSearchInput = value !== "";
@@ -46,15 +46,25 @@ function searchRecipe(value: string): void {
   }
 
   validationErrorText.value = "Bitte geben Sie einen gültigen Rezeptnamen ein.";
-}
+};
 
 provide("errorText", validationErrorText);
+
+onMounted(() => {
+  //@ts-ignore
+  EventBus.on("search", searchRecipe);
+});
+
+onBeforeUnmount(() => {
+  //@ts-ignore
+  EventBus.off("search", searchRecipe);
+});
 </script>
 
 <template>
   <div class="recipe-search-page">
     <div class="flex justify-center mt-10 mb-40">
-      <SearchRecipeForm @search-recipes="searchRecipe" />
+      <SearchRecipeForm />
     </div>
     <ul>
       <li v-for="recipe in foundReciped">

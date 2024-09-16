@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, inject, ref, toRef } from "vue";
+import GourmandButton from "../GourmandButton.vue";
 
+import { computed, inject, ref, toRef } from "vue";
 import type { Ref } from "vue";
 
-import GourmandButton from "../GourmandButton.vue";
+import EventBus from "../../../event-bus";
 
 const props = defineProps<{
   modelValue: string;
@@ -17,7 +18,6 @@ const validationErrorText: Ref<string> =
 
 const emit = defineEmits<{
   (event: "update:modelValue", value: string): void;
-  (event: "search", value: string): void;
 }>();
 
 const inputText = computed({
@@ -30,7 +30,7 @@ const inputText = computed({
 });
 
 function triggerSearch(value: string): void {
-  emit("search", value);
+  EventBus.emit("search", value);
 }
 </script>
 
