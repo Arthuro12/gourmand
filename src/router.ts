@@ -1,13 +1,12 @@
 import { createWebHistory, createRouter } from "vue-router";
+import { useStore } from "vuex";
 
 import type { RouteLocationNormalized } from "vue-router";
-import type { Recipe } from "./recipes";
+import type { Recipe } from "./types/recipes";
 
 import RecipeDetails from "./pages/recipe/RecipeDetails.vue";
 import RecipeSearchPage from "./pages/recipe/RecipeSearchPage.vue";
 import NotFound from "./pages/NotFound.vue";
-
-import { recipes } from "./recipes";
 
 const routes = [
   {
@@ -26,7 +25,8 @@ const routes = [
       to: RouteLocationNormalized,
       _from: RouteLocationNormalized
     ) => {
-      if (!recipeFound(recipes, to.params.id as string)) {
+      const store = useStore();
+      if (!store.getters.hasRecipeWithId(to.params.id as string)) {
         return {
           name: "NotFound",
           params: { pathMatch: to.path.split("/").slice(1) },
@@ -43,7 +43,3 @@ export const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-
-function recipeFound(recipes: Recipe[], id: string): boolean {
-  return recipes.find((currRecipe: Recipe) => currRecipe.id === id) != null;
-}

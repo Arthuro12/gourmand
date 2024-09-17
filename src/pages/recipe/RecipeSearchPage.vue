@@ -4,15 +4,19 @@ import RecipeItem from "../../components/recipe/RecipeItem.vue";
 import SearchRecipeForm from "../../components/search/recipe/SearchRecipeForm.vue";
 
 import { computed, ref, provide, onMounted, onBeforeUnmount } from "vue";
+import { useStore } from "vuex";
+
 import type { ComputedRef, Ref } from "vue";
 
-import type { Recipe } from "../../recipes";
-import { recipes } from "../../recipes";
+import type { Recipe } from "../../types/recipes";
 
 import EventBus from "../../event-bus";
 
-const recipesRef: Ref<Recipe[]> = ref<Recipe[]>(recipes);
-const foundReciped: ComputedRef<Recipe[]> = computed(() => recipesRef.value);
+const store = useStore();
+const searchInput: Ref<string> = ref("");
+
+const foundRecipes: ComputedRef<Recipe[]> = computed(() => store.getters.foundRecipes(searchInput.value));
+const recipe: ComputedRef<Recipe> = computed(() => store.getters.hasRecipeWitId("r5"));
 
 let isValidSearchInput: boolean = false;
 let validationErrorText: Ref<string> = ref("");
@@ -23,29 +27,22 @@ function refreshErrorTexts(): void {
   searchFailText.value = "";
 }
 
-function refreshRecipes(): void {
-  recipesRef.value = recipes;
-}
-
-const searchRecipe = (value: string) => {
+const searchRecipe = async (value: string) => {
   refreshErrorTexts();
 
   isValidSearchInput = value !== "";
-  if (isValidSearchInput) {
-    refreshRecipes();
-    recipesRef.value = recipesRef.value.filter((currRecipe: Recipe) =>
-      currRecipe.name.toLowerCase().includes(value.toLowerCase())
-    );
 
-    searchFailText.value =
-      recipesRef.value.length === 0
-        ? "Es wurden leider keine Rezepte gefunden, die dem eingegebenen Namen entsprechen."
-        : "";
-
+  if (!isValidSearchInput) {
+    validationErrorText.value = "Bitte geben Sie einen gültigen Rezeptnamen ein.";
     return;
   }
+  
+  searchInput.value = value;
 
-  validationErrorText.value = "Bitte geben Sie einen gültigen Rezeptnamen ein.";
+  searchFailText.value =
+      foundRecipes.value.length === 0
+        ? "Es wurden leider keine Rezepte gefunden, die dem eingegebenen Namen entsprechen."
+        : "";
 };
 
 provide("errorText", validationErrorText);
@@ -67,7 +64,7 @@ onBeforeUnmount(() => {
       <SearchRecipeForm />
     </div>
     <ul>
-      <li v-for="recipe in foundReciped">
+      <li v-for="recipe in foundRecipes">
         <GourmandButtonLink
           class="p-0"
           :is-router-link="true"

@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
+import { useStore } from "vuex";
+
 import type { ComputedRef, Ref } from "vue";
 
-import type { Recipe } from "../../recipes";
-
-import { recipes } from "../../recipes.js";
+import type { Recipe } from "../../types/recipes";
 
 const props = defineProps<{
   id: string;
 }>();
 
-const recipesRef: Ref<Recipe[]> = ref(recipes);
+const store = useStore();
+
+const recipesRef: Ref<Recipe[]> = ref(store.state.recipes);
 
 const selectedRecipe: ComputedRef<Recipe | undefined> = computed(() =>
   recipesRef.value.find((currentRecipe) => currentRecipe.id === props.id)
