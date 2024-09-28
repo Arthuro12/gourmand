@@ -1,16 +1,14 @@
 <script setup lang="ts">
+import { computed, ref, provide, onMounted, onBeforeUnmount } from "vue";
+import { useStore } from "vuex";
+import type { ComputedRef, Ref } from "vue";
+
 import GourmandButtonLink from "../../components/ui/GourmandButtonLink.vue";
 import RecipeItem from "../../components/recipe/RecipeItem.vue";
 import SearchRecipeForm from "../../components/search/recipe/SearchRecipeForm.vue";
 
-import { computed, ref, provide, onMounted, onBeforeUnmount } from "vue";
-import { useStore } from "vuex";
-
-import type { ComputedRef, Ref } from "vue";
-
-import type { Recipe } from "../../types/recipes";
-
 import EventBus from "../../event-bus";
+import type { Recipe } from "../../types/recipes";
 
 const store = useStore();
 
