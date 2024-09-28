@@ -2,7 +2,8 @@
 import GourmandButton from "../GourmandButton.vue";
 
 import { computed, inject, ref, toRef } from "vue";
-import type { Ref } from "vue";
+
+import type { WritableComputedRef, Ref } from "vue";
 
 import EventBus from "../../../event-bus";
 
@@ -11,16 +12,16 @@ const props = defineProps<{
   placeholder: string;
   validationErrorText?: string;
 }>();
-const errorTextRef = toRef(props.validationErrorText);
 
-const validationErrorText: Ref<string> =
-  inject("errorText", ref("")) || errorTextRef || ref("");
+const errorTextFromProps: Ref<string|undefined> = toRef(props, "validationErrorText");
+
+const validationErrorText: Ref<string> = inject("errorText", ref("")) || errorTextFromProps;
 
 const emit = defineEmits<{
   (event: "update:modelValue", value: string): void;
 }>();
 
-const inputText = computed({
+const inputText: WritableComputedRef<string> = computed({
   get() {
     return props.modelValue;
   },
@@ -49,10 +50,7 @@ function triggerSearch(value: string): void {
         @click="triggerSearch(inputText)"
       />
     </div>
-    <p
-      class="invalid-input"
-      v-if="validationErrorText && validationErrorText !== ''"
-    >
+    <p class="invalid-input" v-if="validationErrorText && validationErrorText !== ''">
       {{ validationErrorText }}
     </p>
   </form>

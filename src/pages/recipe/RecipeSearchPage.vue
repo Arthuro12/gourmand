@@ -13,10 +13,10 @@ import type { Recipe } from "../../types/recipes";
 import EventBus from "../../event-bus";
 
 const store = useStore();
+
 const searchInput: Ref<string> = ref("");
 
 const foundRecipes: ComputedRef<Recipe[]> = computed(() => store.getters.foundRecipes(searchInput.value));
-const recipe: ComputedRef<Recipe> = computed(() => store.getters.hasRecipeWitId("r5"));
 
 let isValidSearchInput: boolean = false;
 let validationErrorText: Ref<string> = ref("");
