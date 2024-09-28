@@ -2,7 +2,6 @@ import { createWebHistory, createRouter } from "vue-router";
 import { useStore } from "vuex";
 
 import type { RouteLocationNormalized } from "vue-router";
-import type { Recipe } from "./types/recipes";
 
 import RecipeDetails from "./pages/recipe/RecipeDetails.vue";
 import RecipeSearchPage from "./pages/recipe/RecipeSearchPage.vue";
