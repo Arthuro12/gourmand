@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import GourmandCard from "..//ui/GourmandCard.vue";
+
+import fallbackImage from "../../assets/images/lasagne.jpg";
+
 defineProps<{
   recipeName: string;
   imageUrl?: string;
@@ -10,7 +13,10 @@ defineProps<{
   <div class="recipe-card">
     <GourmandCard>
       <template #cardHeader>
-        <img class="recipe-card__image" :src="imageUrl" alt="" />
+        <picture>
+          <source :src="imageUrl" />
+          <img class="recipe-card__image" :src="fallbackImage" alt="" />
+        </picture>
       </template>
       <template #cardBody>
         <div class="recipe-card__title-wrapper">

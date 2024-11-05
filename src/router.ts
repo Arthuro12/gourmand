@@ -3,6 +3,7 @@ import { useStore } from "vuex";
 
 import type { RouteLocationNormalized } from "vue-router";
 
+import AddRecipe from "./pages/recipe/AddRecipe.vue";
 import RecipeDetails from "./pages/recipe/RecipeDetails.vue";
 import RecipeSearchPage from "./pages/recipe/RecipeSearchPage.vue";
 import NotFound from "./pages/NotFound.vue";
@@ -15,6 +16,10 @@ const routes = [
   {
     path: "/recipes",
     component: RecipeSearchPage,
+  },
+  {
+    path: "/recipes/create",
+    component: AddRecipe,
   },
   {
     path: "/recipes/:id",

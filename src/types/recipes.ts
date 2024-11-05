@@ -1,5 +1,5 @@
 export type Recipe = {
-  id: string;
+  id?: string;
   name: string;
   imagePath?: string;
   description: string;

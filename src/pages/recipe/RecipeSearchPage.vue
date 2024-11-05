@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, provide, onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
+import { computed, ref, provide, onMounted, onBeforeUnmount } from "vue";
 import type { ComputedRef, Ref } from "vue";
 
 import GourmandButtonLink from "../../components/ui/GourmandButtonLink.vue";
@@ -46,6 +46,7 @@ const searchRecipe = async (value: string) => {
 provide("errorText", validationErrorText);
 
 onMounted(() => {
+  store.dispatch("loadRecipes");
   //@ts-ignore
   EventBus.on("search", searchRecipe);
 });
@@ -54,6 +55,13 @@ onBeforeUnmount(() => {
   //@ts-ignore
   EventBus.off("search", searchRecipe);
 });
+
+// async function fetchData() {
+//   const data = await fetch("https://gourmand-f4950-default-rtdb.firebaseio.com/recipes.json");
+//   console.log(data.json());
+// }
+
+// fetchData();
 </script>
 
 <template>

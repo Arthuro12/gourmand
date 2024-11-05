@@ -3,6 +3,8 @@ import { computed, ref } from "vue";
 import type { ComputedRef, Ref } from "vue";
 import { useStore } from "vuex";
 
+import fallbackImage from "../../assets/images/lasagne.jpg";
+
 import type { Recipe } from "../../types/recipes";
 
 const props = defineProps<{
@@ -13,20 +15,26 @@ const store = useStore();
 
 const recipesRef: Ref<Recipe[]> = ref(store.state.recipes);
 
-const selectedRecipe: ComputedRef<Recipe | undefined> = computed(() =>
-  recipesRef.value.find((currentRecipe) => currentRecipe.id === props.id)
+const selectedRecipe: ComputedRef<Recipe | null> = computed(
+  () =>
+    recipesRef.value.find((currentRecipe) => currentRecipe.id === props.id) ??
+    null
 );
-const recipeName: ComputedRef<string | undefined> = computed(
-  () => selectedRecipe.value?.name
+
+const recipeName: ComputedRef<string> = computed(
+  () => selectedRecipe.value?.name ?? ""
 );
-const imageUrl: ComputedRef<string | undefined> = computed(
-  () => selectedRecipe.value?.imagePath
+
+const imageUrl: ComputedRef<string> = computed(
+  () => selectedRecipe.value?.imagePath ?? ""
 );
-const ingredients: ComputedRef<string[] | undefined> = computed(
-  () => selectedRecipe.value?.ingredients
+
+const ingredients: ComputedRef<string[]> = computed(
+  () => selectedRecipe.value?.ingredients ?? []
 );
-const preparationSteps: ComputedRef<string[] | undefined> = computed(
-  () => selectedRecipe.value?.preparationSteps
+
+const preparationSteps: ComputedRef<string[]> = computed(
+  () => selectedRecipe.value?.preparationSteps ?? []
 );
 </script>
 
@@ -34,7 +42,10 @@ const preparationSteps: ComputedRef<string[] | undefined> = computed(
   <div class="recipe-page">
     <div class="recipe-page__header">
       <h3>{{ recipeName }}</h3>
-      <img class="recipe-image" :src="imageUrl" alt="" />
+      <picture>
+        <source :src="imageUrl" />
+        <img class="recipe-image" :src="fallbackImage" alt="" />
+      </picture>
     </div>
     <div class="recipe-page__body">
       <div>
